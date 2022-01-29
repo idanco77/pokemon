@@ -34,9 +34,9 @@ export class EditorComponent implements OnInit {
   }
 
   private _filter(value: string): string[] {
-//    if (value.length < 3) {
-   //   return [];
-   // }
+   if (value.length < 3) {
+     return [];
+   }
     const filterValue = value.toLowerCase();
     return this.list.filter((option: string) => option.toLowerCase().includes(filterValue));
   }
