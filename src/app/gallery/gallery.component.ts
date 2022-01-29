@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {PokemonService} from 'src/app/_services/http/pokemon.service';
 import {Pokemon} from 'src/app/_models/pokemon.model';
 import {ActivatedRoute} from '@angular/router';
 import {HelpersService} from 'src/app/_services/generic/helpers.service';
@@ -14,7 +13,7 @@ export class GalleryComponent implements OnInit {
   cachedPokemon: Pokemon[];
   existingTypes: string[];
 
-  constructor(private pokemonService: PokemonService, private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private helpers: HelpersService) { }
 
   ngOnInit(): void {
