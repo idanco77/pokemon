@@ -1,0 +1,27 @@
+<div *ngIf="pokemon?.length" class="row">
+    <div class="col-6">
+      <table class="table text-center">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Pokemon</th>
+          <th scope="col">Weight</th>
+          <th scope="col">types</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of pokemon; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td><img class="img-thumbnail" width="70px" [src]="item.image" [alt]="item.image"></td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.weight }}</td>
+          <td>{{ item.types }}</td>
+          <td><span class="pointer" (click)="delete(item.id)"><i class="fas fa-trash"></i></span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

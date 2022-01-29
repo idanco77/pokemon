@@ -1,0 +1,23 @@
+<h3 class="text-center mt-4">Pokemon Gallery</h3>
+<div *ngIf="allStoredPokemon" class="container">
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input (keyup)="search($event)" matInput placeholder="Search">
+  </mat-form-field>
+  <div class="d-flex justify-content-start">
+    <p *ngFor="let type of existingTypes"  (click)="filterByType(type)" class="mx-2 pointer">#{{ type }} </p>
+    <p class="text-secondary pointer" (click)="filterByType(null)"> #Reset</p>
+  </div>
+<div class="row">
+  <div *ngFor="let pokemon of allStoredPokemon" class="col-3 m-2 card card-bg pb-4" style="width: 18rem;">
+    <img class="card-img-top" [src]="pokemon.image" [alt]="pokemon.name">
+    <div class="card-body">
+      <h3 class="card-title">{{ pokemon.name }}</h3>
+      <p class="card-text">Weight: {{ pokemon.weight }} kg <i class="fas fa-balance-scale-left mx-2"></i></p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li *ngFor="let type of pokemon.types; let i = index" class="list-group-item list-group-item-warning">{{ (i + 1) + ': ' + type }}</li>
+    </ul>
+  </div>
+</div>
+</div>
