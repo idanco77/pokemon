@@ -10,12 +10,16 @@ import {MatButtonModule} from '@angular/material/button';
 import {ListOfAllPokemonResolve} from 'src/app/_resolves/list-of-all-pokemon.resolve';
 import {PokemonService} from 'src/app/_services/http/pokemon.service';
 import {PokemonTableModule} from 'src/app/pokemonTable/pokemon-table.module';
+import {AllStoredPokemonResolve} from 'src/app/_resolves/all-stored-pokemon-resolve.service';
 
 const routes: Routes = [
   {
     path: '',
     component: EditorComponent,
-    resolve: {pokemonList: ListOfAllPokemonResolve}
+    resolve: {
+      pokemonList: ListOfAllPokemonResolve,
+      pokemon: AllStoredPokemonResolve
+    }
   }
 ];
 
@@ -33,6 +37,7 @@ const routes: Routes = [
   declarations: [EditorComponent],
   providers: [
     ListOfAllPokemonResolve,
+    AllStoredPokemonResolve,
     PokemonService,
   ]
 })

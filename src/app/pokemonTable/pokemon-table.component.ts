@@ -1,23 +1,24 @@
-import {Component, Input, OnChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import {PokemonService} from 'src/app/_services/http/pokemon.service';
 import {NotificationService} from 'src/app/_services/generic/notification.service';
 import {HelpersService} from 'src/app/_services/generic/helpers.service';
 import {Pokemon} from 'src/app/_models/pokemon.model';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-table',
   templateUrl: './pokemon-table.component.html'
 })
-export class PokemonTableComponent implements OnChanges {
+export class PokemonTableComponent implements OnChanges, OnInit {
   @Input() isSaved: boolean = false;
   pokemon: Pokemon[];
 
   constructor(private pokemonService: PokemonService, private notificationService: NotificationService,
-              private helpers: HelpersService) {
+              private helpers: HelpersService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.fetchItems();
+    this.pokemon = this.route.snapshot.data['pokemon'];
   }
 
   ngOnChanges() {
